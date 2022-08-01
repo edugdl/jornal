@@ -1,14 +1,24 @@
 
 export default function Register() {
-    
+
     function getUser(){
         const cep = document.getElementById('cep') as HTMLInputElement;
         const cep_value = cep.value;
-        return fetch(`https://viacep.com.br/ws/${cep_value}/json/`, {
-            method: 'GET',
+
+        let usuario = {
+            nome : 'eduardo' ,
+            senha : '123' ,
+            cep : '11018864989' ,
+            dataNascimento : '2005-07-09' ,
+            email : 'eduardogdelazari2005@gmail.com' 
+        }
+
+        return fetch(`localhost:8085/registrarUsuario`, {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body : JSON.stringify(usuario)
         })
         .then(response => response.json())
         .then(data => {
@@ -16,7 +26,7 @@ export default function Register() {
         })
     }
 
-    return (
+    return(
         <div>
             <div>Crie sua conta</div>
             <input type="text" name="coisa" placeholder="Seu cep" id="cep" />
