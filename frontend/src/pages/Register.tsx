@@ -12,7 +12,7 @@ export default function Register() {
             dataNascimento : '2005-07-09' ,
             email : 'eduardogdelazari2005@gmail.com' 
         }
-
+        
         return fetch(`127.0.0.1:8085/registrarUsuario`, {
             method: 'POST',
             headers: {
