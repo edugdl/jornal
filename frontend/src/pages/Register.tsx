@@ -20,10 +20,7 @@ export default function Register() {
             },
             body : JSON.stringify(usuario)
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
+        .then(()=>{console.log("Usuario registrado com sucesso")})
     }
 
     return(
