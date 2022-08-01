@@ -12,7 +12,7 @@ public class Usuario {
     private Long id;
     private String nome;
     private String senha;
-    private int cep;
+    private String cep;
     private String dataNascimento;
     private String email;
 
@@ -28,10 +28,10 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    public int getCep() {
+    public String getCep() {
         return cep;
     }
-    public void setCep(int cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
     public String getDataNascimento() {
