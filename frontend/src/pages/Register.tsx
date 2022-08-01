@@ -13,7 +13,7 @@ export default function Register() {
             email : 'eduardogdelazari2005@gmail.com' 
         }
 
-        return fetch(`http://localhost:8085/registrarUsuario`, {
+        return fetch(`localhost:8085/registrarUsuario`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
