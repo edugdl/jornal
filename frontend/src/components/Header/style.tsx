@@ -7,7 +7,7 @@ export const Container = styled.header`
     width : 100%;
     height : 80px;
     background-color : #324B4C;
-    margin-bottom : 80px;
+    margin-bottom : 30px;
 `;
 
 export const Logo = styled.img`
