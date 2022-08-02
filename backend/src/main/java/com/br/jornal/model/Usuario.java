@@ -16,6 +16,10 @@ public class Usuario {
     private String dataNascimento;
     private String email;
 
+    public Long getId() {
+        return id;
+    }
+
     public String getNome() {
         return nome;
     }
