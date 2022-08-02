@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const botao = styled.div`
+export const botao = styled.button`
     width: 320px;
     border-radius : 5px;
     display : flex;

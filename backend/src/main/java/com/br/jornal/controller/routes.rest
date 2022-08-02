@@ -22,3 +22,5 @@ Content-Type: application/json
     "nome": "Gabriel",
 
 }
+###
+POST http://localhost:8085/cadastrarUsuario?nome=eduardo&cpf=11018864989&dataNascimento=a&cep=a&senha=b&email=c
