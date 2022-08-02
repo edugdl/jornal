@@ -1,0 +1,24 @@
+POST http://localhost:8085/cadastrarUsuario
+Content-Type: application/json
+
+{
+    "nome": "Pedro",
+    "senha": "123",
+    "cep": "88034100",
+    "dataNascimento": "2003-12-15",
+    "email": "gabriel.sartorirangel@gmail.com"
+}
+###
+DELETE http://localhost:8085/deletarUsuario/1
+
+###
+GET http://localhost:8085/buscarUsuarios
+
+###
+POST http://localhost:8085/teste
+Content-Type: application/json
+
+{
+    "nome": "Gabriel",
+
+}
