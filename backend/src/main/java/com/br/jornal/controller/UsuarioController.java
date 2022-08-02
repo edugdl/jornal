@@ -41,13 +41,16 @@ public class UsuarioController {
         return u.get();
     }
     
+    // Não entendo metade do que tá rolando aqui
     @PostMapping("/teste")
+    // Acho que esse response entity serve pra dar um código de resposta pro cliente
     public ResponseEntity<Usuario> create(@RequestBody Usuario u) 
         throws URISyntaxException {
         Usuario createdUser = usuarioRepositorio.save(u);
         if (createdUser == null) {
             return ResponseEntity.notFound().build();
         } else {
+            // ??????????
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
               .path("/{id}")
               .buildAndExpand(createdUser.getId())
@@ -57,8 +60,9 @@ public class UsuarioController {
               .body(createdUser);
         }
     }
+    // mano tiltei
     @PostMapping("/cadastrarUsuario")
-    public Usuario cadastrarUsuario(Usuario u){
+    public Usuario cadastrarUsuario(@RequestBody Usuario u){
         usuarioRepositorio.save(u);
         System.out.println(u.getNome());
         return u;
