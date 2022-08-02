@@ -41,6 +41,28 @@ public class UsuarioController {
         return u.get();
     }
     
+    @PostMapping("/cadastrarUsuario")
+    public Usuario cadastrarUsuario(@RequestBody Usuario u){
+        usuarioRepositorio.save(u);
+        return u;
+    }
+    
+    @PatchMapping("/atualizarUsuario")
+    public Usuario atualizarUsuario(Usuario u){
+        usuarioRepositorio.saveAndFlush(u);
+        return u;
+    }
+    
+    @DeleteMapping("/deletarUsuario/{id}")
+    public String deletarUsuario(@PathVariable Long id){
+        Optional<Usuario> u = usuarioRepositorio.findById(id);
+        if(u.isEmpty()){
+            return "Usuario não encontrado";
+        }
+        usuarioRepositorio.deleteById(id);
+        return "Usuário deletado com sucesso!";
+    }
+
     // Não entendo metade do que tá rolando aqui
     @PostMapping("/teste")
     // Acho que esse response entity serve pra dar um código de resposta pro cliente
@@ -59,28 +81,5 @@ public class UsuarioController {
             return ResponseEntity.created(uri)
               .body(createdUser);
         }
-    }
-    // mano tiltei
-    @PostMapping("/cadastrarUsuario")
-    public Usuario cadastrarUsuario(@RequestBody Usuario u){
-        usuarioRepositorio.save(u);
-        System.out.println(u.getNome());
-        return u;
-    }
-
-    @PatchMapping("/atualizarUsuario")
-    public Usuario atualizarUsuario(Usuario u){
-        usuarioRepositorio.saveAndFlush(u);
-        return u;
-    }
-
-    @DeleteMapping("/deletarUsuario/{id}")
-    public String deletarUsuario(@PathVariable Long id){
-        Optional<Usuario> u = usuarioRepositorio.findById(id);
-        if(u.isEmpty()){
-            return "Usuario não encontrado";
-        }
-        usuarioRepositorio.deleteById(id);
-        return "Usuário deletado com sucesso!";
     }
 }
