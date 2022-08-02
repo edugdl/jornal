@@ -1,50 +1,36 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 5px 15px;
-    width: 30%;
-
-    @media (max-width: 750px) {
-        width: 20%;
-
-        p{
-            font-size: 12px;
-        }
-
-        span{
-            font-size: 20px;
-        }
-
-        svg{
-            display: none;
-        }
-    }
+export const Container = styled.header`
+    display : flex;
+    justifiy-content : center;
+    align-items : center;
+    width : 100%;
+    height : 80px;
+    background-color : #324B4C;
+    margin-bottom : 80px;
 `;
 
-export const Header = styled.header`
-    margin: 20px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 10px;
-
-    svg{
-        width: 25px;
-        height: 25px;
-    }
+export const Logo = styled.img`
+    width : 15%;
 `;
 
-export const HeaderTitle = styled.p`
-    font-size: 20px;
+export const Botao = styled.button`
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    border : none;
+    width : 12.5%;
+    margin-left: 1.25%;
+    height : 50px;
+    font-size : 1.7em;
+    background-color : #fff;
+    color : #324B4C; 
 `;
 
-export const Total = styled.span`
-    font-size: 20px;
-    font-weight: bold;
+export const Nome = styled.h1`
+    display : flex;
+    justify-content : center;
+    width : 70%;
+    font-size : 2em;
+    color : #fff
 `;
