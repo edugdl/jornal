@@ -9,6 +9,7 @@ export default function Login() {
         <div>
             <Header/>
             <C.Caixa>
+                <Campo id='nome' text='Nome' placeHolder='Insira aqui seu Nome Completo'/>
                 <Campo id='email' text='Email' placeHolder='Insira aqui seu Email'/>
                 <Campo id='cpf' text='CPF' placeHolder='Insira aqui seu Cpf'/>
                 <Campo id='cep' text='CEP' placeHolder='Insira aqui seu Cep'/>

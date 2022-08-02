@@ -14,12 +14,11 @@ const registrarConta = () => {
         cep : $("#cep").val(),
         nome : $("#nome").val(),
         senha : $("#senha").val(),
-        nascimento : $("#nascimento").val(),
+        dataNascimento : $("#nascimento").val(),
     }
-    $.post("localhost:8085/cadastrarUsuario", novoUsuario)
-    .done(function(data) {
-        alert( "Data Loaded: " + data );
-  });
+    $.post("http://localhost:8085/cadastrarUsuario",novoUsuario,function(retorno){
+        alert(JSON.stringify(retorno))    
+    })
 }
 
 export default function Botao(props : BotaoProperties){
