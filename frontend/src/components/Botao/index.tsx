@@ -8,6 +8,18 @@ type BotaoProperties = {
 }
 
 const registrarConta = () => {
+    let novoUsuario = {
+        email : $("#email").val(),
+        cpf : $("#cpf").val(),
+        cep : $("#cep").val(),
+        nome : $("#nome").val(),
+        senha : $("#senha").val(),
+        nascimento : $("#nascimento").val(),
+    }
+    $.post("localhost:8085/cadastrarUsuario", novoUsuario)
+    .done(function(data) {
+        alert( "Data Loaded: " + data );
+  });
 }
 
 export default function Botao(props : BotaoProperties){

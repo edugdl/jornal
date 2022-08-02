@@ -8,8 +8,8 @@ export default function Login() {
         <div>
             <Header/>
             <C.Caixa>
-                <Campo text='Email' placeHolder='Insira aqui seu Email'/>
-                <Campo text='Senha' placeHolder='Insira aqui sua Senha'/>
+                <Campo id='email' text='Email' placeHolder='Insira aqui seu Email'/>
+                <Campo id='senha' text='Senha' placeHolder='Insira aqui sua Senha'/>
                 <Botao text='Fazer Login' txtRedirect='Caso ainda não possua uma conta ' redirect='/register'/>
             </C.Caixa>
         </div>
