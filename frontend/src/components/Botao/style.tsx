@@ -14,6 +14,9 @@ export const botao = styled.div`
 export const txtRedirect = styled.p`
     color : #324B4C;
     font-size: 20px;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
 `;
 
 export const redirect = styled.a`
