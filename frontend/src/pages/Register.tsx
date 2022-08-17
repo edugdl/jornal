@@ -5,12 +5,12 @@ import Header from '../components/Header'
 import { useState } from 'react'
 
 export default function Login() {
-    const [nome, setNome] = useState('');
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
-    const [dataNascimento, setDataNascimento] = useState('');
-    const [cpf, setCpf] = useState('');
-    const [cep, setCep] = useState('');
+    const [_nome, setNome] = useState('');
+    const [_email, setEmail] = useState('');
+    const [_senha, setSenha] = useState('');
+    const [_dataNascimento, setDataNascimento] = useState('');
+    const [_cpf, setCpf] = useState('');
+    const [_cep, setCep] = useState('');
 
     const registrarUsuario = () => {return};
 

@@ -3,12 +3,24 @@ import Campo from '../components/CamposLoginRegister'
 import Botao from '../components/Botao'
 import Header from '../components/Header'
 import { useState } from 'react'
+import api from '../services/api'
 
 export default function Login() {
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+    const [_email, setEmail] = useState('');
+    const [_senha, setSenha] = useState('');
     
-    const logarUsuario = () => {return};
+    const logarUsuario = async () => {
+        api.post('/usuario/login', {
+            email: _email,
+            senha: _senha
+          })
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    };
     return (
         <div>
             <Header/>

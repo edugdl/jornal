@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,14 @@ public class UsuarioController {
     
     @Autowired
     UsuarioRepositorio usuarioRepositorio;
+    
+    @GetMapping("/teste")
+    public Usuario teste(){
+        Usuario u = new Usuario();
+        u.setNome("a");
+        u.setCep("123213");
+        return u;
+    }
 
     @GetMapping("/buscarTodos")
     public List<Usuario> registrarUsuario(){
@@ -62,15 +71,16 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public Usuario login(@RequestParam String email, @RequestParam String senha){
-        Optional<Usuario> u = usuarioRepositorio.findByemail(email);
-        if(u.isEmpty()){
+    public Usuario login(@RequestBody Usuario u){
+        System.out.println(u.getEmail());
+        Optional<Usuario> usuarioExistente = usuarioRepositorio.findByemail(u.getEmail());
+        if(usuarioExistente.isEmpty()){
             return null;
         }
-        if(!u.get().getSenha().equals(senha)){
+        if(!usuarioExistente.get().getSenha().equals(u.getSenha())){
             return null;
         }
-        return u.get();
+        return usuarioExistente.get();
     }
 
     // @PostMapping("/teste")
