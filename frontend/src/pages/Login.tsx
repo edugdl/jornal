@@ -3,7 +3,7 @@ import Campo from '../components/CamposLoginRegister'
 import Botao from '../components/Botao'
 import Header from '../components/Header'
 import { useState } from 'react'
-import { useFetch } from '../hooks/useFetch'
+import { useFetchPost } from '../hooks/useFetch'
 
 
 export default function Login() {
@@ -11,7 +11,7 @@ export default function Login() {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
 
-  const { data, loading, error } = useFetch('/login')
+  const { data, loading, error } = useFetchPost('/login', { email, senha })
   
   function logarUsuario(){
     console.log(data)
