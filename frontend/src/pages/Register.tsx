@@ -3,6 +3,8 @@ import Campo from '../components/CamposLoginRegister'
 import Botao from '../components/Botao'
 import Header from '../components/Header'
 import { useState } from 'react'
+import { useFetchPost } from '../hooks/useFetch'
+
 
 export default function Login() {
     const [_nome, setNome] = useState('');
@@ -12,7 +14,11 @@ export default function Login() {
     const [_cpf, setCpf] = useState('');
     const [_cep, setCep] = useState('');
 
-    const registrarUsuario = () => {return};
+    const { data, loading, error} = useFetchPost('/cadastrar', {_nome, _email, _senha, _dataNascimento, _cpf, _cep});
+    
+    const registrarUsuario = () => {
+        console.log(data)
+    };
 
     return (
         <div>

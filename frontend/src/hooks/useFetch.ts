@@ -19,6 +19,15 @@ type Login = {
     senha: string
 }
 
+type Register = {
+    nome: string
+    email: string
+    senha: string
+    dataNascimento: string
+    cpf: string
+    cep: string
+}
+
 export function useFetchGet<T = unknown>(url: string){
 
     const [data, setData] = useState<T | undefined>(undefined);
@@ -41,7 +50,7 @@ export function useFetchGet<T = unknown>(url: string){
     return { data, loading, error };
 }
 
-export function useFetchPost<T = unknown>(url: string, body: Login){
+export function useFetchPost<T = unknown>(url: string, body: any){
     const [data, setData] = useState<T | undefined>(undefined);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
