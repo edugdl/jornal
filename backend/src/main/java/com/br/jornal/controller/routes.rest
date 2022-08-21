@@ -1,13 +1,6 @@
-POST http://localhost:8085/cadastrarUsuario
+POST http://localhost:8085/usuario/cadastrar
 Content-Type: application/json
 
-{
-    "nome": "Pedro",
-    "senha": "123",
-    "cep": "88034100",
-    "dataNascimento": "2003-12-15",
-    "email": "gabriel.sartorirangel@gmail.com"
-}
 ###
 DELETE http://localhost:8085/deletarUsuario/1
 
