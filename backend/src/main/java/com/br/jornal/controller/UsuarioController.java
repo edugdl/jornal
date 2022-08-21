@@ -50,8 +50,12 @@ public class UsuarioController {
     
     @PostMapping("/cadastrar")
     public Usuario cadastrarUsuario(@RequestBody Usuario u){
-        usuarioRepositorio.save(u);
-        return u;
+        Optional<Usuario> usuario = usuarioRepositorio.findByemail(u.getEmail());
+        if(usuario.isEmpty()){
+            usuarioRepositorio.save(u);
+            return u;
+        }
+        return null;
     }
     
     @PatchMapping("/atualizar")
