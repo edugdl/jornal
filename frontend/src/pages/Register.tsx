@@ -3,7 +3,7 @@ import Campo from '../components/CamposLoginRegister'
 import Botao from '../components/Botao'
 import Header from '../components/Header'
 import { useState } from 'react'
-import { useAxiosGet } from '../hooks/useAxios'
+import { useAxiosPost } from '../hooks/useAxios'
 import api from '../services/api'
 
 
@@ -15,7 +15,7 @@ export default function Login() {
     const [_cpf, setCpf] = useState('');
     const [_cep, setCep] = useState('');
     
-    const { response, loading, error, execute } = useAxiosGet({
+    const { response, loading, error, execute } = useAxiosPost({
         url: '/usuario/cadastrar',
         requestConfig:{
             body:{

@@ -72,7 +72,6 @@ public class UsuarioController {
 
     @PostMapping("/login")
     public Usuario login(@RequestBody Usuario u){
-        System.out.println(u.getEmail());
         Optional<Usuario> usuarioExistente = usuarioRepositorio.findByemail(u.getEmail());
         if(usuarioExistente.isEmpty()){
             return null;

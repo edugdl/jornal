@@ -6,7 +6,7 @@ type configType = {
     requestConfig?: any;
 }
 
-export function useAxiosGet<T = unknown>(config: configType){
+export function useAxiosPost<T = unknown>(config: configType){
     
     const api = axios.create({
         baseURL: "http://localhost:8085",
