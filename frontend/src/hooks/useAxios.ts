@@ -31,7 +31,7 @@ export function useAxiosGet<T = unknown>(config: configType){
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const res = await api.post(url, requestConfig);
+                const res = await api.post(url, requestConfig.body);
                 setResponse(res.data);
                 console.log(res.data);
             }catch(err: any){

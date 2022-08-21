@@ -17,13 +17,14 @@ export default function Login() {
     
     const { response, loading, error, execute } = useAxiosGet({
         url: '/usuario/cadastrar',
-        requestConfig: {
-            body: {
-                nome: _nome,
-                email: _email,
-                senha: _senha,
-                dataNascimento: _dataNascimento,
-                cep: _cep
+        requestConfig:{
+            body:{
+                'nome': _nome,
+                'email': _email,
+                'senha': _senha,
+                'dataNascimento': _dataNascimento,
+                'cpf': _cpf,
+                'cep': _cep
             }
         }
     })
