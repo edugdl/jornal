@@ -5,6 +5,14 @@ import Header from '../components/Header'
 import { useState } from 'react'
 import { useAxiosPost } from '../hooks/useAxios'
 
+type Register = {
+    nome: string,
+    email: string,
+    senha: string
+    dataNascimento: string
+    cpf: string
+    cep: string
+}
 
 export default function Login() {
     const [_nome, setNome] = useState('');
@@ -14,7 +22,7 @@ export default function Login() {
     const [_cpf, setCpf] = useState('');
     const [_cep, setCep] = useState('');
     
-    const { response, loading, error, execute } = useAxiosPost({
+    const { response, loading, error, execute } = useAxiosPost<Register>({
         url: '/usuario/cadastrar',
         requestConfig:{
             body:{
@@ -29,6 +37,15 @@ export default function Login() {
     })
     // const { data, loading, error} = {0, 0, 0}
     
+    const registrarUsuario = () => {
+        execute()
+        if(response){
+            console.log(response)
+        }else{
+            console.log('erro')
+        }
+    }
+
     return (
         <div>
             <Header/>
@@ -39,8 +56,9 @@ export default function Login() {
                 <Campo change={e => setDataNascimento(e.target.value)}id='nascimento' text='Data de Nascimento' placeHolder='Insira aqui sua Data de Nascimento'/>
                 <Campo change={e => setCpf(e.target.value)}id='cpf' text='CPF' placeHolder='Insira aqui seu Cpf'/>
                 <Campo change={e => setCep(e.target.value)}id='cep' text='CEP' placeHolder='Insira aqui seu Cep'/>
-                <Botao acao={execute} text='Registrar a conta' txtRedirect='Caso ja possua uma conta ' redirect='/login'/>
+                <Botao acao={registrarUsuario} text='Registrar a conta' txtRedirect='Caso ja possua uma conta ' redirect='/login'/>
             </C.Caixa>
+            <button onClick={() => {console.log(response)}}>teste</button>
         </div>
     );
 }

@@ -25,9 +25,14 @@ export default function Login() {
     }
   })
 
-
-  // const { data, loading, error } = useFetchPost('/login', { email, senha }, gambiarra)
-  
+  const logarUsuario = () => {
+    execute()
+    if(response){
+      console.log(response)
+    }else{
+      console.log('login invalido')
+    }
+  }
 
   return (
       <div>
@@ -35,7 +40,7 @@ export default function Login() {
           <C.Caixa>
               <Campo change={e => setEmail(e.target.value)} id='email' text='Email' placeHolder='Insira aqui seu Email'/>
               <Campo change={e => setSenha(e.target.value)} id='senha' text='Senha' placeHolder='Insira aqui sua Senha'/>
-              <Botao acao={execute} text='Fazer Login' txtRedirect='Caso ainda não possua uma conta ' redirect='/register'/>
+              <Botao acao={logarUsuario} text='Fazer Login' txtRedirect='Caso ainda não possua uma conta ' redirect='/register'/>
           </C.Caixa>
       </div>
   );

@@ -33,7 +33,6 @@ export function useAxiosPost<T = unknown>(config: configType){
             try{
                 const res = await api.post(url, requestConfig.body);
                 setResponse(res.data);
-                console.log(res.data);
             }catch(err: any){
                 setError(err.message);
             }finally{
