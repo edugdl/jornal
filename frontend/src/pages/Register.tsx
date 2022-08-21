@@ -3,7 +3,8 @@ import Campo from '../components/CamposLoginRegister'
 import Botao from '../components/Botao'
 import Header from '../components/Header'
 import { useState } from 'react'
-import { useFetchPost } from '../hooks/useFetch'
+import { useAxiosGet } from '../hooks/useAxios'
+import api from '../services/api'
 
 
 export default function Login() {
@@ -13,13 +14,21 @@ export default function Login() {
     const [_dataNascimento, setDataNascimento] = useState('');
     const [_cpf, setCpf] = useState('');
     const [_cep, setCep] = useState('');
-
-    const { data, loading, error} = useFetchPost('/cadastrar', {_nome, _email, _senha, _dataNascimento, _cpf, _cep});
     
-    const registrarUsuario = () => {
-        console.log(data)
-    };
-
+    const { response, loading, error, execute } = useAxiosGet({
+        url: '/usuario/cadastrar',
+        requestConfig: {
+            body: {
+                nome: _nome,
+                email: _email,
+                senha: _senha,
+                dataNascimento: _dataNascimento,
+                cep: _cep
+            }
+        }
+    })
+    // const { data, loading, error} = {0, 0, 0}
+    
     return (
         <div>
             <Header/>
@@ -30,7 +39,7 @@ export default function Login() {
                 <Campo change={e => setDataNascimento(e.target.value)}id='nascimento' text='Data de Nascimento' placeHolder='Insira aqui sua Data de Nascimento'/>
                 <Campo change={e => setCpf(e.target.value)}id='cpf' text='CPF' placeHolder='Insira aqui seu Cpf'/>
                 <Campo change={e => setCep(e.target.value)}id='cep' text='CEP' placeHolder='Insira aqui seu Cep'/>
-                <Botao acao={registrarUsuario} text='Registrar a conta' txtRedirect='Caso ja possua uma conta ' redirect='/login'/>
+                <Botao acao={execute} text='Registrar a conta' txtRedirect='Caso ja possua uma conta ' redirect='/login'/>
             </C.Caixa>
         </div>
     );

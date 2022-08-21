@@ -3,18 +3,20 @@ import Campo from '../components/CamposLoginRegister'
 import Botao from '../components/Botao'
 import Header from '../components/Header'
 import { useState } from 'react'
-import { useFetchPost } from '../hooks/useFetch'
+// import { useAxios } from '../hooks/useAxios'
 
 
 export default function Login() {
 
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
+  const [gambiarra, setGambiarra] = useState(false);
 
-  const { data, loading, error } = useFetchPost('/login', { email, senha })
+
+  // const { data, loading, error } = useFetchPost('/login', { email, senha }, gambiarra)
   
   function logarUsuario(){
-    console.log(data)
+    setGambiarra(!gambiarra);
   }
 
   return (
