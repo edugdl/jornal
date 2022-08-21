@@ -5,13 +5,17 @@ import Header from '../components/Header'
 import { useState } from 'react'
 import { useAxiosPost } from '../hooks/useAxios'
 
+type Login = {
+  email: string,
+  senha: string
+}
 
 export default function Login() {
 
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   
-  const { response, loading, error, execute } = useAxiosPost({
+  const { response, loading, error, execute } = useAxiosPost<Login>({
     url: '/usuario/login',
     requestConfig:{
       body:{
