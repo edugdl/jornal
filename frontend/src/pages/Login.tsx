@@ -3,7 +3,8 @@ import Campo from '../components/CamposLoginRegister'
 import Botao from '../components/Botao'
 import Header from '../components/Header'
 import { useState } from 'react'
-import { useAxiosPost } from '../hooks/useAxios'
+import '../services/api'
+import api from '../services/api'
 
 type Login = {
   email: string,
@@ -14,19 +15,18 @@ export default function Login() {
 
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
-  
-  const { response, loading, error, execute } = useAxiosPost<Login>({
-    url: '/usuario/login',
-    requestConfig:{
-      body:{
-        'email': email,
-        'senha': senha
-      }
-    }
-  })
+
+  const fetchLogin = async () => {
+    const response = await api.post('/usuario/login', {
+      email: email,
+      senha: senha
+    }).then((response) => {
+      console.log(response.data)
+    })
+  }
 
   const logarUsuario = () => {
-    execute()
+    const response = fetchLogin()
     if(response){
       console.log(response)
     }else{
