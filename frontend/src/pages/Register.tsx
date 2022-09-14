@@ -3,7 +3,7 @@ import Campo from '../components/CamposLoginRegister'
 import Botao from '../components/Botao'
 import Header from '../components/Header'
 import { useState } from 'react'
-import { useAxiosPost } from '../hooks/useAxios'
+import api from '../services/api'
 
 type Register = {
     nome: string,
@@ -22,28 +22,26 @@ export default function Login() {
     const [_cpf, setCpf] = useState('');
     const [_cep, setCep] = useState('');
     
-    const { response, loading, error, execute } = useAxiosPost<Register>({
-        url: '/usuario/cadastrar',
-        requestConfig:{
-            body:{
-                'nome': _nome,
-                'email': _email,
-                'senha': _senha,
-                'dataNascimento': _dataNascimento,
-                'cpf': _cpf,
-                'cep': _cep
-            }
-        }
-    })
-    // const { data, loading, error} = {0, 0, 0}
-    
+    const fetchData = async () => {
+        api.post('/usuario/cadastrar', {
+            nome: _nome,
+            email: _email,
+            senha: _senha,
+            dataNascimento: _dataNascimento,
+            cpf: _cpf,
+            cep: _cep
+        }).then((response) => {
+            console.log(response.data)
+        })
+    }
+
     const registrarUsuario = () => {
-        execute()
+        const response = fetchData()
         if(response){
             console.log(response)
         }else{
-            console.log('erro')
-        }
+            console.log('login invalido')
+        }        
     }
 
     return (
@@ -58,7 +56,6 @@ export default function Login() {
                 <Campo change={e => setCep(e.target.value)}id='cep' text='CEP' placeHolder='Insira aqui seu Cep'/>
                 <Botao acao={registrarUsuario} text='Registrar a conta' txtRedirect='Caso ja possua uma conta ' redirect='/login'/>
             </C.Caixa>
-            <button onClick={() => {console.log(response)}}>teste</button>
         </div>
     );
 }
